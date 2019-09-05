@@ -1,6 +1,6 @@
 ##### BEGIN image.base/Dockerfile/image-header #####
 FROM vcwebio/conteco.image.wrapper AS wrapper
-FROM vcwebio/conteco.external.streamsets:3.8.2 AS base
+FROM vcwebio/conteco.external.streamsets:3.10.1 AS base
 ##### END image.base/Dockerfile/image-header #####
 
 ##### BEGIN image.base/Dockerfile/conteco #####
@@ -23,16 +23,16 @@ ENV CONTECO_REALM="vcwebio" \
     CONTECO_ECOSYSTEM="conteco" \
     CONTECO_TYPE="streamsets" \
     CONTECO_NAME="base" \
-    CONTECO_TAG="3.8.2" \
-    CONTECO_BASE="external.streamsets:3.8.2" \
+    CONTECO_TAG="3.10.1" \
+    CONTECO_BASE="external.streamsets:3.10.1" \
     CONTECO_BUILD="image-base"
 LABEL io.vcweb.schema-version="1.0" \
       io.vcweb.realm="vcwebio" \
       io.vcweb.ecosystem="conteco" \
       io.vcweb.type="streamsets" \
       io.vcweb.name="base" \
-      io.vcweb.tag="3.8.2" \
-      io.vcweb.base="external.streamsets:3.8.2" \
+      io.vcweb.tag="3.10.1" \
+      io.vcweb.base="external.streamsets:3.10.1" \
       io.vcweb.build="image-base" \
       io.vcweb.label="ContEco streamsets.base" \
       io.vcweb.description="The ContEco Streamsets base image." \
