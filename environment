@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+export CONTECO_LABEL="ContEco streamsets.base"
+export CONTECO_DESCRIPTION="The ContEco Streamsets base image."
+
+export CONTECO_TYPE="streamsets"
+export CONTECO_NAME="base"
+export CONTECO_TAG="3.8.2"
+
+export CONTECO_BASE="external.streamsets:3.8.2"
+export CONTECO_BUILD="image-base"

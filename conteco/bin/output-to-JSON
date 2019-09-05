@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# the default is to return the message as is
+# each container type instance can implement its own if required
+stream=$1
+INPUT=$2
+
+if [[ "$INPUT" != "{"* ]] ; then
+
+	if [[ "$INPUT" == "2"* ]] ; then
+		case $(echo $INPUT | cut -d ']' -f6 | cut -d ' ' -f2 ) in
+			*"INFO"*)
+				LEVEL="INFO"
+				;;
+			*"WARN"*)
+				LEVEL="WARNING"
+				;;
+			*"ERROR"*)
+				LEVEL="ERROR"
+				;;
+			*)
+				LEVEL="INFO"
+				;;
+		esac
+		MESSAGE=$(echo $INPUT | cut -d ' ' -f3- | jq -aR . )
+
+	else
+
+		LEVEL="STACKTRACE"
+		MESSAGE=$(echo $INPUT | jq -aR . )
+	
+	fi
+	printf '{ "source": "logger", "level": "%s", "message":%s }' "$LEVEL" "$MESSAGE"
+
+else 
+
+	printf "%s" "$INPUT"
+
+fi
+
+ 
