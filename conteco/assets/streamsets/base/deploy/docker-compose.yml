@@ -1,0 +1,20 @@
+---
+version: '3'
+services:
+
+  service:
+##### BEGIN ${CONTECO_TYPE}.${CONTECO_NAME}/docker-compose/service #####
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.${CONTECO_TYPE}.${CONTECO_NAME}:${CONTECO_TAG}
+    environment:
+      SDC_JAVA_OPTS: "-Xmx512m -Xms512m "
+##### BEGIN ${CONTECO_TYPE}.${CONTECO_NAME}/docker-compose/service #####
+    ports:
+      - 18630:18630
+    deploy:
+      mode: replicated
+    networks:
+      - ${CONTECO_ECOSYSTEM}_overlay
+
+networks:
+  ${CONTECO_ECOSYSTEM}_overlay:
+    external: true

@@ -16,7 +16,7 @@ COPY ./ /conteco/git-repository/
 
 ##### BEGIN image/Dockerfile/build-instructions #####
 ENV CONTECO_ENTRYPOINT "/docker-entrypoint.sh"
-COPY ./conteco/streamsets/base/etc/sdc/sdc.properties /etc/sdc/sdc.properties
+COPY ./conteco/assets/streamsets/base/etc/sdc/sdc.properties /etc/sdc/sdc.properties
 CMD ["/docker-entrypoint.sh", "dc"]
 #USER sdc
 ##### END image/Dockerfile/build-instructions #####
