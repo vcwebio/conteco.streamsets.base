@@ -37,7 +37,7 @@ LABEL io.vcweb.schema-version="1.0" \
       io.vcweb.tag="3.10.1" \
       io.vcweb.base="external.streamsets:3.10.1" \
       io.vcweb.build="image-base" \
-      io.vcweb.label="ContEco streamsets.base" \
-      io.vcweb.description="The ContEco Streamsets base image." \
+      io.vcweb.label="streamsets.base - ContEco" \
+      io.vcweb.description="Streamsets Base image with configuration changes." \
       io.vcweb.docker.cmd.help="docker run vcwebio/conteco.streamsets.base --help" 
 ##### END image.base/Dockerfile/env-labels-footer #####
