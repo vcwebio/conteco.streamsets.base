@@ -1,13 +1,22 @@
-# The Conteco streamsets.base Image
+# `streamsets.base` - ContEco
 
-The Streamsets base image.
+Streamsets Base image with configuration changes.
+See `conteco.docs.overview` for more information on the ContEco ecosystem.
 
-## Modifications
+## Configuration Changes
 
-None.
+The following configuration changes were made:  
+```bash
+# hosting streamsets behind reverse proxy
+enable.forwarded.requests=true
+
+# disable authentication
+http.authentication=none
+
+# disabled support bundle upload
+bundle.upload.enabled=false
+```
 
 ## Tags
 
 * 3.10.1  
-* 3.8.2  
-
