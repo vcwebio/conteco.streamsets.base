@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 # START CONFIGURATION
-export CONTECO_DC_GLOBAL_STACKS='streamsets.base'
-export CONTECO_DC_GLOBAL_STACKNAMES='streamsets'
-export CONTECO_DC_GLOBAL_VOLUME_LIST='streamsets_volume'
+export CONTECO_DC_GLOBAL_STACKS="streamsets.base"
+export CONTECO_DC_GLOBAL_STACKNAMES="streamsets"
+export CONTECO_DC_GLOBAL_BOOTSTACKS="streamsets"
+export CONTECO_DC_GLOBAL_RUNSTACKS=""
+export CONTECO_DC_GLOBAL_VOLUME_LIST="streamsets_volume"
 # END CONFIGURATION
 
 # START OTHER VARIABLES
