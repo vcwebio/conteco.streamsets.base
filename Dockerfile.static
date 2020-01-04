@@ -1,3 +1,8 @@
+##### BEGIN image/Dockerfile/header-instructions #####
+FROM vcwebio/conteco.external.streamsets-libs:elasticsearch_5-lib-3.10.1 AS elastic
+FROM vcwebio/conteco.external.streamsets-libs:kafka_2_0-lib-3.10.1 AS kafka
+##### END image/Dockerfile/header-instructions #####
+
 ##### BEGIN image.base/Dockerfile/image-header #####
 FROM vcwebio/conteco.image.wrapper AS wrapper
 FROM vcwebio/conteco.external.streamsets:3.10.1 AS base
@@ -18,7 +23,9 @@ COPY ./ /conteco/git-repository/
 ENV CONTECO_ENTRYPOINT "/docker-entrypoint.sh"
 COPY ./conteco/configs/etc/sdc/sdc.properties /etc/sdc/sdc.properties
 CMD ["/docker-entrypoint.sh", "dc"]
-#USER sdc
+COPY --from=elastic /opt/streamsets-datacollector-3.10.1/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib /opt/streamsets-datacollector-3.10.1/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib
+COPY --from=kafka /opt/streamsets-datacollector-3.10.1/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib /opt/streamsets-datacollector-3.10.1/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib
+USER sdc
 ##### END image/Dockerfile/build-instructions #####
 
 ##### BEGIN image.base/Dockerfile/env-labels-footer #####
@@ -38,6 +45,6 @@ LABEL io.vcweb.schema-version="1.0" \
       io.vcweb.base="external.streamsets:3.10.1" \
       io.vcweb.build="image-base" \
       io.vcweb.label="streamsets.base - ContEco" \
-      io.vcweb.description="Streamsets Base image with configuration changes." \
-      io.vcweb.docker.cmd.help="docker run vcwebio/conteco.streamsets.base --help" 
+      io.vcweb.description="Streamsets Base image with configuration changes and pre-installed stage libraries." \
+      io.vcweb.docker.cmd.help="docker run vcwebio/conteco.streamsets.base --help"
 ##### END image.base/Dockerfile/env-labels-footer #####

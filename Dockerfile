@@ -1,3 +1,8 @@
+##### BEGIN image/Dockerfile/header-instructions #####
+FROM $CONTECO_REALM/$CONTECO_ECOSYSTEM.external.${CONTECO_TYPE}-libs:elasticsearch_5-lib-3.10.1 AS elastic
+FROM $CONTECO_REALM/$CONTECO_ECOSYSTEM.external.${CONTECO_TYPE}-libs:kafka_2_0-lib-3.10.1 AS kafka
+##### END image/Dockerfile/header-instructions #####
+
 ##### BEGIN image.base/Dockerfile/image-header #####
 FROM $CONTECO_REGISTRY$CONTECO_REALM/$CONTECO_ECOSYSTEM.image.wrapper AS wrapper
 FROM $CONTECO_REGISTRY$CONTECO_REALM/$CONTECO_ECOSYSTEM.$CONTECO_BASE AS base
@@ -18,7 +23,9 @@ COPY ./ /conteco/git-repository/
 ENV CONTECO_ENTRYPOINT "/docker-entrypoint.sh"
 COPY ./conteco/configs/etc/sdc/sdc.properties /etc/sdc/sdc.properties
 CMD ["/docker-entrypoint.sh", "dc"]
-#USER sdc
+COPY --from=elastic /opt/streamsets-datacollector-3.10.1/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib /opt/streamsets-datacollector-3.10.1/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib
+COPY --from=kafka /opt/streamsets-datacollector-3.10.1/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib /opt/streamsets-datacollector-3.10.1/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib
+USER sdc
 ##### END image/Dockerfile/build-instructions #####
 
 ##### BEGIN image.base/Dockerfile/env-labels-footer #####
@@ -39,5 +46,5 @@ LABEL $CONTECO_LABELSPACE.schema-version="1.0" \
       $CONTECO_LABELSPACE.build="$CONTECO_BUILD" \
       $CONTECO_LABELSPACE.label="$CONTECO_LABEL" \
       $CONTECO_LABELSPACE.description="$CONTECO_DESCRIPTION" \
-      $CONTECO_LABELSPACE.docker.cmd.help="docker run ${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.${CONTECO_TYPE}.${CONTECO_NAME} --help" 
+      $CONTECO_LABELSPACE.docker.cmd.help="docker run ${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.${CONTECO_TYPE}.${CONTECO_NAME} --help"
 ##### END image.base/Dockerfile/env-labels-footer #####
