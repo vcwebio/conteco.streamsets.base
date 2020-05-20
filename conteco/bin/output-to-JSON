@@ -33,7 +33,7 @@ do
 			part1=$(echo $INPUT | cut -d ']' -f1-5 )
 			part2=$(echo $INPUT | cut -d ']' -f6 | cut -d ' ' -f3- )
 
-			message=$(echo "$part1 $part2" | jq -aR . )
+			message=$(echo "$part2 $part1" | jq -aR . )
 
 		else
 
