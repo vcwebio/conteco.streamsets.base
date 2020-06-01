@@ -16,6 +16,7 @@ COPY ./ /conteco/repo/
 
 ##### BEGIN image/Dockerfile/build-instructions #####
 ENV CONTECO_ENTRYPOINT "/docker-entrypoint.sh"
+COPY ./conteco/configs/etc/sdc/sdc-log4j.properties /etc/sdc/sdc-log4j.properties
 COPY ./conteco/configs/etc/sdc/sdc.properties /etc/sdc/sdc.properties
 CMD ["/docker-entrypoint.sh", "dc"]
 USER sdc
