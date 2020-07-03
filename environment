@@ -5,7 +5,7 @@ export CONTECO_DESCRIPTION="Streamsets Base image with configuration changes and
 
 export CONTECO_TYPE="streamsets"
 export CONTECO_NAME="base"
-export CONTECO_TAG="3.10.1"
+export CONTECO_TAG="3.16.0"
 
-export CONTECO_BASE="external.streamsets:3.10.1"
+export CONTECO_BASE="external.streamsets:3.16.0"
 export CONTECO_BUILD="image-base"
