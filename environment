@@ -7,5 +7,6 @@ export CONTECO_TYPE="streamsets"
 export CONTECO_NAME="base"
 export CONTECO_TAG="3.19.0"
 
-export CONTECO_BASE="external.streamsets:3.19.0"
 export CONTECO_BUILD="image-base"
+
+export CONTECO_EXTERNAL_IMAGE_NAME="vcwebio/conteco.external.streamsets:3.19.0"
